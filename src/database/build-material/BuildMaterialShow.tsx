@@ -13,7 +13,6 @@ import {
 import { Box, Dialog, DialogContent, Typography, Divider } from '@mui/material';
 import { format } from 'date-fns';
 import { BuildMaterial, User } from '../../types';
-import EntityImageField from '../common/EntityImageField';
 
 
 export const BuildMaterialShow = ({ open, id }: { open: boolean; id?: string }) => {
@@ -60,7 +59,7 @@ const BuildMaterialShowContent = () => {
                     flexDirection="column"
                     alignItems="center"
                 >
-                    <EntityImageField  resource='build-material'/>
+                    {/* <EntityImageField  resource='build-material'/> */}
                 </Box>
                 <Box ml={2} flex="1">
                     <Typography variant="h5">{record.name}</Typography>

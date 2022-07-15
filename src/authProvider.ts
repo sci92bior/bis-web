@@ -3,7 +3,7 @@ import { AuthProvider, fetchUtils, localStorageStore } from 'react-admin';
 const authProvider: AuthProvider = {
      login: ({ username, password}) => {
     // force homeserver for protection in case the form is manipulated
-    var base_url = "http://192.168.200.122:8080/api";
+    var base_url = "http://192.168.93.122:8080/api";
 
     console.log("login ");
     const options = {
@@ -28,7 +28,7 @@ const authProvider: AuthProvider = {
   },
   logout: () => {
     console.log("logout");
-    var base_url = "http://192.168.200.122:8080/api";
+    var base_url = "http://192.168.93.122:8080/api";
 
     const logout_api_url =
       base_url+ "/auth/sign-out";

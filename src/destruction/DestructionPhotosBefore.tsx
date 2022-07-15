@@ -11,16 +11,27 @@ import {
     TextInput,
 } from 'react-admin';
 
-const DestructionPhotosBefore= () => (
-    <ArrayInput source="photosBefore">
+import { useController, useWatch, useFormContext} from "react-hook-form";
+import { LoadImageExample } from '../database/common/ImageUploader';
+
+const DestructionPhotosBefore= () => {
+
+    const {getValues, setValue} = useFormContext();
+    const [itemIndex, setItemIndex] = React.useState(0);
+             
+    const handleImageUpload = (images : Array<any>) => {
+        setValue(`photosBefore[${itemIndex}].base64`,images[0]["data_url"]);
+        setItemIndex(itemIndex+1);
+        console.log(getValues());
+    }
+
+    return <ArrayInput source="photosBefore" label="">
     <SimpleFormIterator>
-    <ImageInput source="photo" label="bis.destruction.photos_before" accept="image/*" placeholder={<p>Drop your file here</p>}>
-        <ImageField source="src" title="title" />
-    </ImageInput>
+        <LoadImageExample maxImage={10} onUpload={handleImageUpload}/>
     <RichTextInput source="description" />
     </SimpleFormIterator>
 </ArrayInput>
-);
+};
 
 export default DestructionPhotosBefore;
 const req = [required()];

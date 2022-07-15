@@ -16,7 +16,6 @@ import { BuildMaterialShow } from './BuildMaterialShow';
 export const BuildMaterialList = () => {
     const { identity } = useGetIdentity();
     const location = useLocation();
-    const matchCreate = matchPath('/build-material/create', location.pathname);
     const matchShow = matchPath('/build-material/:id/show', location.pathname);
     if (!identity) return null;
     return (
@@ -32,7 +31,6 @@ export const BuildMaterialList = () => {
             >
                 <BuildMaterialListDesktop />
             </List>
-            <CreateBuildMaterial open={!!matchCreate} />
             <BuildMaterialShow open={!!matchShow} id={matchShow?.params.id} />
         </>
     );

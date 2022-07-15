@@ -12,7 +12,7 @@ import {
 const DestructionProcess = () => (
     <ArrayInput source="processItems">
     <SimpleFormIterator>
-        <TextInput source="title" />
+        <TextInput source="title" fullWidth/>
         <NumberInput source="time" label="bis.common.time" min="0"
                 InputProps={{
                     endAdornment: (

@@ -22,13 +22,7 @@ import {
     StepContent,
     Grid,
 } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-
-import order from '../orders';
-import review from '../database/explosive-material';
 import CircleIcon from '@mui/icons-material/Circle';
-import StarRatingField from '../database/common/StarRatingField';
 import {
     Order as OrderRecord,
     Review as ReviewRecord,

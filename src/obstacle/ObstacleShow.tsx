@@ -23,6 +23,8 @@ import Basket from './ObstacleSummary';
 import ExplosiveMaterialsSummary from './ObstacleSummary';
 import dataProvider from '../dataProvider/dataProvider';
 import BISImageList from '../database/common/BISImageList';
+import UserDetail from '../database/common/UserDetail';
+import DestructionRelatedAside from '../destruction/DestructionRelatedAside';
 
 const ObstacleShow = () => (
     <Show title={<ObstacleTitle />} component="div">
@@ -40,16 +42,6 @@ const ObstacleTitle = () => {
     ) : null;
 };
 
-const UserDetail = () => {
-    const record = useRecordContext<User>();
-    return (
-        <div>
-            <Typography>
-                {record?.firstName} {record?.lastName}
-            </Typography>
-        </div>
-    );
-};
 
 const Spacer = () => <Box m={1}>&nbsp;</Box>;
 
@@ -59,8 +51,8 @@ const ObstacleDetail = () => {
     const record = useRecordContext<Obstacle>();
     const images = dataProvider.getImage('obstacle', record.id)
     return (
+        <Show aside={<DestructionRelatedAside target='obstacleId'/>}>
         <Form>
-            <Box maxWidth="50em">
                 <Card>
                     <CardContent>
                         <Grid container spacing={1}>
@@ -124,8 +116,8 @@ const ObstacleDetail = () => {
                     </CardContent>
                     <Toolbar />
                 </Card>
-            </Box>
         </Form>
+        </Show>
     );
 };
 

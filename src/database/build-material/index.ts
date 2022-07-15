@@ -7,4 +7,5 @@ import BuildMaterialEdit from './BuildMaterialEdit';
 export default {
     icon: Stop,
     list: BuildMaterialList,
+    create: CreateBuildMaterial
 };

@@ -16,7 +16,6 @@ import { ExplosiveMaterialShow } from './ExplosiveMaterialShow';
 export const ExplosiveMaterialList = () => {
     const { identity } = useGetIdentity();
     const location = useLocation();
-    const matchCreate = matchPath('/explosive-material/create', location.pathname);
     const matchShow = matchPath('/explosive-material/:id/show', location.pathname);
     if (!identity) return null;
     return (
@@ -32,7 +31,6 @@ export const ExplosiveMaterialList = () => {
             >
                 <ExplosiveMaterialListDesktop />
             </List>
-            <CreateExplosiveMaterial open={!!matchCreate} />
             <ExplosiveMaterialShow open={!!matchShow} id={matchShow?.params.id} />
         </>
     );

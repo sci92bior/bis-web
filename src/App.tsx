@@ -14,15 +14,16 @@ import orders from './orders';
 import explosiveUnit from './explosive-unit';
 import obstacle from './obstacle';
 import invoices from './invoices';
-import categories from './categories';
-import reviews from './database/explosive-material';
 import Configuration from './configuration/Configuration';
 import Segments from './segments/Segments';
 import dataProvider from './dataProvider/dataProvider';
-import initationSystems from './database/initation-systems';
 import explosiveMaterial from './database/explosive-material';
 import buildMaterial from './database/build-material';
+import category from './database/category';
 import destruction from './destruction';
+import simple_entity from './database/simple_entity';
+import course from './course';
+import exercise from './exercise';
 
 const i18nProvider = polyglotI18nProvider(locale => {
     if (locale === 'fr') {
@@ -46,8 +47,6 @@ const App = () => {
             disableTelemetry
             theme={lightTheme}
         >
-            <Resource name="initiation-system" {...initationSystems}/>
-
             <CustomRoutes>
                 <Route path="/configuration" element={<Configuration />} />
                 <Route path="/segments" element={<Segments />} />
@@ -59,13 +58,17 @@ const App = () => {
                 options={{ label: 'Orders' }}
             />
             <Resource name="invoices" {...invoices} />
-            <Resource name="categories" {...categories} />
+            <Resource name="categories" {...category} />
+            <Resource name="simple-entity" {...simple_entity} />
             <Resource name="explosive-material" {...explosiveMaterial} />
             <Resource name="build-material" {...buildMaterial} />
             <Resource name="explosive-unit" {...explosiveUnit} />
             <Resource name="obstacle" {...obstacle} />
             <Resource name="destruction" {...destruction} />
             <Resource name="explosive-material-quantity" />
+            <Resource name="topic" />
+            <Resource name="exercise" {...exercise}/>
+            <Resource name="course" {...course} />
         </Admin>
     );
 };

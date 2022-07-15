@@ -17,9 +17,12 @@ import explosivesMaterial from '../database/explosive-material';
 import buildMaterial from '../database/build-material';
 import SubMenu from './SubMenu';
 import database from '../database';
-import InitationSystems from '../database/initation-systems';
 import Obstacle from '../obstacle';
 import destruction from '../destruction';
+import course from '../course';
+import category from '../database/category'
+import Simple_entity from '../database/simple_entity';
+import Exercise from '../exercise';
 
 type MenuName = 'menuBreaching' | 'menuCatalog' | 'menuSales' | 'menuDatabase' | 'menuUsers';
 
@@ -96,6 +99,24 @@ const Menu = ({ dense = false }: MenuProps) => {
                 dense={dense}
             >
                 <MenuItemLink
+                    to="/categories"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`bis.categories.title`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<category.icon />}
+                    dense={dense}
+                />
+                 <MenuItemLink
+                    to="/simple-entity"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`bis.simple_entity.title`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<Simple_entity.icon />}
+                    dense={dense}
+                />
+                <MenuItemLink
                     to="/explosive-material"
                     state={{ _scrollToTop: true }}
                     primaryText={translate(`bis.explosive_materials.title`, {
@@ -113,17 +134,26 @@ const Menu = ({ dense = false }: MenuProps) => {
                     leftIcon={<buildMaterial.icon />}
                     dense={dense}
                 />
-                <MenuItemLink
-                    to="/initiation-system"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`bis.initiation_system.title`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<InitationSystems.icon />}
-                    dense={dense}
-                />
                 
             </SubMenu>
+            <MenuItemLink
+                    to="/course"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`bis.course.title`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<course.icon />}
+                    dense={dense}
+                />
+            <MenuItemLink
+                    to="/exercise"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`bis.exercise.title`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<Exercise.icon />}
+                    dense={dense}
+                />
             {/* <SubMenu
                 handleToggle={() => handleToggle('menuSales')}
                 isOpen={state.menuSales}

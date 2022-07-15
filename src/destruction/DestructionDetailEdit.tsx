@@ -32,7 +32,7 @@ export const DestructionEditDetail = () => (
         </ReferenceInput>
         </Grid>
         <Grid item >
-        <RichTextInput source="description" label="" validate={req} />
+        <RichTextInput source="description" label=""/>
         </Grid>
     </Grid>
 );

@@ -1,5 +1,6 @@
+
 import * as React from 'react';
-import { EditButton, List, useListContext } from 'react-admin';
+import { EditButton, List, ShowButton, useListContext } from 'react-admin';
 import inflection from 'inflection';
 import {
     Grid,
@@ -9,9 +10,8 @@ import {
     CardActions,
     Typography,
 } from '@mui/material';
+import { Category } from '../../types';
 
-import LinkToRelatedProducts from './LinkToRelatedProducts';
-import { Category } from '../types';
 
 const CategoryList = () => (
     <List
@@ -19,7 +19,6 @@ const CategoryList = () => (
         perPage={20}
         pagination={false}
         component="div"
-        actions={false}
     >
         <CategoryGrid />
     </List>
@@ -36,7 +35,7 @@ const CategoryGrid = () => {
                 <Grid key={record.id} xs={12} sm={6} md={4} lg={3} xl={2} item>
                     <Card>
                         <CardMedia
-                            image={`https://marmelab.com/posters/${record.name}-1.jpeg`}
+                            image={`data:/jpeg;base64,${record.image}`}
                             sx={{ height: 140 }}
                         />
                         <CardContent sx={{ paddingBottom: '0.5em' }}>
@@ -56,8 +55,7 @@ const CategoryGrid = () => {
                                 },
                             }}
                         >
-                            <LinkToRelatedProducts />
-                            <EditButton record={record} />
+                            <ShowButton record={record} />
                         </CardActions>
                     </Card>
                 </Grid>

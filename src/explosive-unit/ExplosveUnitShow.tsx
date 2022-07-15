@@ -23,6 +23,7 @@ import Totals from './Totals';
 import ExplosiveMaterialsSummary from './ExplosiveMaterialsSummary';
 import dataProvider from '../dataProvider/dataProvider';
 import BISImageList from '../database/common/BISImageList';
+import DestructionRelatedAside from '../destruction/DestructionRelatedAside';
 
 const ExplosiveUnitShow = () => (
     <Show title={<ExplosiveUnitTitle />} component="div">
@@ -59,8 +60,8 @@ const ExplosiveUnitDetail = () => {
     const record = useRecordContext<ExplosiveUnit>();
     const images = dataProvider.getImage('explosive-unit', record.id)
     return (
+        <Show emptyWhileLoading aside={<DestructionRelatedAside target='explosiveUnitId'/>}>
         <Form>
-            <Box maxWidth="50em">
                 <Card>
                     <CardContent>
                         <Grid container spacing={1}>
@@ -123,8 +124,8 @@ const ExplosiveUnitDetail = () => {
                     </CardContent>
                     <Toolbar />
                 </Card>
-            </Box>
         </Form>
+        </Show>
     );
 };
 

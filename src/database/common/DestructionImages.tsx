@@ -107,7 +107,5 @@ const DestructionImagesList = ({ size = '50', sx, resource}: Props) => {
 };
 
 export default DestructionImagesList;
-function translate(arg0: string): React.ReactNode {
-  throw new Error('Function not implemented.');
-}
+
 

@@ -13,7 +13,6 @@ import {
 import { Box, Dialog, DialogContent, Typography, Divider } from '@mui/material';
 import { format } from 'date-fns';
 import { BuildMaterial, ExplosiveMaterial, User } from '../../types';
-import EntityImageField from '../common/EntityImageField';
 
 
 export const ExplosiveMaterialShow = ({ open, id }: { open: boolean; id?: string }) => {
@@ -60,7 +59,7 @@ const ExplosiveMaterialShowContent = () => {
                     flexDirection="column"
                     alignItems="center"
                 >
-                    <EntityImageField  resource='explosive-material'/>
+                    {/* <EntityImageField  resource='explosive-material'/> */}
                 </Box>
                 <Box ml={2} flex="1">
                     <Typography variant="h5">{record.name}</Typography>

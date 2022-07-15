@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Create, FormTab, TabbedForm, TextInput, required } from 'react-admin';
+import { Create, FormTab, TabbedForm, TextInput, required, SaveButton, Toolbar, useGetList } from 'react-admin';
 import { RichTextInput } from 'ra-input-rich-text';
 
 import { DestructionEditDetail } from './DestructionDetailEdit';
@@ -7,10 +7,15 @@ import DestructionProcess from './DestructionProcess';
 import { DestructionEquipmentDetail } from './DestructionEquipmentDetail';
 import DestructionPhotosBefore from './DestructionPhotosBefore';
 import DestructionPhotosAfter from './DestructionPhotosAfter';
+import { useController, useWatch, useFormContext} from "react-hook-form";
+import { Category } from '../types';
 
 const DestructionCreate = () => {
+    
+
     return (
-        <Create>
+        
+        <Create >
             <TabbedForm >
                 <FormTab
                     label="bis.common.general"

@@ -21,6 +21,15 @@ export const unitTypeArray = [
     
  ];
 
+ export const entityUnitTypeArray = [
+    { name: 'm',id:"M" },
+    { name: 'kg',id:"KG" },
+    { name: 'g.',id:"G" },
+    { name: 'l',id:"L" },
+    { name: 'szt',id:"SZT" },
+    
+ ];
+
  export const roles = [
     { id: 'ADMIN', name: 'bis.roles.admin' },
     { id: 'INSTRUCTOR', name: 'bis.roles.instructor' },
@@ -54,9 +63,67 @@ export interface ProcessItem extends RaRecord {
     description : string;
 }
 
+export interface Course extends RaRecord {
+    name : string;
+    instructorId : string;
+    startDate : string;
+    endDate : string;
+    participants : Array<CourseParticipant>;
+    createdBy: string;
+    creationDate : string;
+    topics : Array<Topic>;
+    lastMarks : Array<TopicMark>;
+}
+
+export interface Topic{
+    id:string;
+    name : string;
+    endDate : string | null;
+}
+
+export interface CourseParticipant{
+    participantId : string;
+    marks : Array<TopicMark>;
+    pluses : number;
+    minuses : number;
+}
+
+export interface DatabaseItemQuantity{
+    simpleEntityId : string | null;
+    explosiveUnitId : string | null;
+    explosiveMaterialId : string | null;
+    name : string;
+    unit : string;
+    quantity : number;
+}
+
+export interface TopicMark extends RaRecord {
+    participantId : string | null;
+    instructorId : string;
+    createDate : string;
+    description : string;
+    isPlus : boolean;
+    topic : Topic | null;
+}
+
+export interface Exercise extends RaRecord {
+    name : string;
+    startDate : string;
+    endDate : string;
+    topic : Topic | null;
+    databaseItems: Array<DatabaseItemQuantity>;
+    createdBy: string;
+}
+
+
 export interface DestructionImages {
     after : Array<PhotoDto> | null;
     before : Array<PhotoDto> | null;
+}
+
+export interface AdditionalItem {
+    name : string;
+    categoryName: string;
 }
 
 export interface Destruction extends RaRecord{
@@ -68,6 +135,7 @@ export interface Destruction extends RaRecord{
     seal : number | null;
     obstacleId : string | null;
     explosiveUnitId: string | null;
+    secondExplosiveUnitId: string | null;
     go : boolean | null;
     twoStage: boolean | null;
     creationDate: string | null;
@@ -76,6 +144,8 @@ export interface Destruction extends RaRecord{
     date: string | null;
     updatedBy: string | null;
     processItems: Array<ProcessItem> | null;
+    additionalItems: Array<SimpleEntity> | null;
+    secondAdditionalItems: Array<SimpleEntity> | null;
 }
 
 export interface ExplosiveMaterial extends BaseEntity {
@@ -146,6 +216,15 @@ export interface User extends RaRecord {
 
 export interface Category extends RaRecord {
     name: string;
+    image: string;
+}
+
+export interface SimpleEntity extends RaRecord {
+    name: string;
+    categoryName: string | null;
+    image: string | null;
+    unitType: string | null;
+    creationDate: string | null;
 }
 
 export interface Product extends RaRecord {

@@ -25,11 +25,21 @@ const customEnglishMessages: TranslationMessages = {
             breaching:"Breaching",
             performer:"Performer",
             time:"Time",
-            localization:"Localization"
+            localization:"Localization",
+            add_photo:"Add photo",
+            referenced_object:"Referenced objects",
+            add:"Add",
+
         },
         process: {
             title:"Process",
             equipment:"Equipment"
+            
+          },
+          categories: {
+            title:"Categories",
+            one:"Category",
+            new:"Create database element"
             
           },
           guns: {
@@ -43,12 +53,12 @@ const customEnglishMessages: TranslationMessages = {
             second: "Second Tool"
           },
         explosive_materials: {
-          title:"Explosive materials",
-          one: "Explosive material",
-          grains: "Grains",
-          rFactor: "R.E. Factor",
-          unitType:"Unit",
-          new:"New Explosive Material"
+            title:"Explosive materials",
+            one: "Explosive material",
+            grains: "Grains",
+            rFactor: "R.E. Factor",
+            unitType:"Unit",
+            new:"New Explosive Material"
         },
         roles:{
             admin:"Administrator",
@@ -67,7 +77,8 @@ const customEnglishMessages: TranslationMessages = {
             no_go:"NO GO",
             photos_before:"Photos before",
             photos_after:"Photos after",
-            first_stage:"First stage"
+            first_stage:"First stage",
+            second_stage:"Second stage"
 
         },
         user:{
@@ -89,28 +100,59 @@ const customEnglishMessages: TranslationMessages = {
             new: "New Build Material",
           },
         explosive_unit:{
-          title:"Explosive units",
-          one: "Explosive unit",
-          second: "Second Explosive unit",
-          standard:"Standard",
-          exotic:"Exotic",
-          makeTime:"Make time",
-          newTNT : "N.E.W TNT",
-          newActual : "N.E.W Actual",
-          msd:"MSD"
+            title:"Explosive units",
+            one: "Explosive unit",
+            second: "Second Explosive unit",
+            standard:"Standard",
+            exotic:"Exotic",
+            makeTime:"Make time",
+            newTNT : "N.E.W TNT",
+            newActual : "N.E.W Actual",
+            msd:"MSD"
         },
         initiation_system:{
             title:"Initiation systems",
             one: "Initiation system",
           },
+        simple_entity:{
+            title:"Database entities",
+            one: "Database entity",
+        },
+
+        course:{
+            title:"Courses",
+            one: "Course",
+            start_time:"Start time",
+            end_time:"End time",
+            students: "Students",
+            instructor: "Instructor",
+            topics: "Topics",
+            topic: "Topic",
+            pluses:"Pluses",
+            minuses:"Minuses",
+            participant:"Participant",
+            participants:"Participants",
+            add_mark:"Add mark",
+            mark_confirmation:"Mark added correctly!",
+            topic_tone_confirmation:"Topic marked as done correctly!",
+            last_marks:"Last marks"
+
+
+        },
         obstacle:{
-        title:"Obstacles",
-        one: "Obstacle",
-        thickness: "Thickness",
-        wall:"Wall",
-        ceiling:"Ceiling",
-        door:"Door",
-        window:"Window"
+            title:"Obstacles",
+            one: "Obstacle",
+            thickness: "Thickness",
+            wall:"Wall",
+            ceiling:"Ceiling",
+            door:"Door",
+            window:"Window"
+        },
+        exercise:{
+            title:"Exercise planner",
+            one: "Exersice",
+            start_time:"Start time",
+            end_time:"End time",
         }
       },
     pos: {

@@ -1,26 +1,31 @@
-import { InputAdornment } from '@mui/material';
 import { RichTextInput } from 'ra-input-rich-text';
 import * as React from 'react';
 import {
     ArrayInput,
-    ImageField,
-    ImageInput,
-    NumberInput,
     required,
     SimpleFormIterator,
-    TextInput,
 } from 'react-admin';
+import { LoadImageExample } from '../database/common/ImageUploader';
+import { useController, useWatch, useFormContext} from "react-hook-form";
 
-const DestructionPhotosAfter= () => (
-    <ArrayInput source="photosAfter">
+const DestructionPhotosAfter= () => {
+
+    const {getValues, setValue} = useFormContext();
+    const [itemIndex, setItemIndex] = React.useState(0);
+             
+    const handleImageUpload = (images : Array<any>) => {
+        setValue(`photosAfter[${itemIndex}].base64`,images[0]["data_url"]);
+        setItemIndex(itemIndex+1);
+        console.log(getValues());
+    }
+
+    return <ArrayInput source="photosAfter" label="">
     <SimpleFormIterator>
-    <ImageInput source="photo" label="bis.destruction.photos_after" accept="image/*" placeholder={<p>Drop your file here</p>}>
-        <ImageField source="src" title="title" />
-    </ImageInput>
+        <LoadImageExample maxImage={10} onUpload={handleImageUpload}/>
     <RichTextInput source="description" />
     </SimpleFormIterator>
 </ArrayInput>
-);
+};
 
 export default DestructionPhotosAfter;
 const req = [required()];

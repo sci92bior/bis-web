@@ -26,6 +26,8 @@ import ExplosiveUnitField from '../explosive-unit/ExplosiveUnitField';
 import ExplosiveUnitReferenceField from '../explosive-unit/ExplosiveUnitReferenceField';
 import ObstacleReferenceField from '../obstacle/ObstacleReferenceField';
 import DestructionImagesList from '../database/common/DestructionImages';
+import UserDetail from '../database/common/UserDetail';
+import AdditionalItemsSummary from './AdditionalItemsSummary';
 
 const DestructionShow = () => (
     <Show title={<ExplosiveUnitTitle />} component="div" aside={<Aside />}>
@@ -43,16 +45,7 @@ const ExplosiveUnitTitle = () => {
     ) : null;
 };
 
-const UserDetail = () => {
-    const record = useRecordContext<User>();
-    return (
-        <div>
-            <Typography>
-                {record?.firstName} {record?.lastName}
-            </Typography>
-        </div>
-    );
-};
+
 
 const Spacer = () => <Box m={1}>&nbsp;</Box>;
 
@@ -69,7 +62,7 @@ const DestructionDetail = () => {
                         <Grid container spacing={1}>
                             <Grid item xs={12} sm={12} md={12}>
                                 <Typography variant="h6" gutterBottom>
-                                <b>{record.name}</b>
+                                    <b>{record.name}</b>
                                 </Typography>
                                 <Grid container>
                                     <Grid item xs={12} sm={12} md={4}>
@@ -79,12 +72,12 @@ const DestructionDetail = () => {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={4}>
                                         <Labeled source="performerId" label="bis.common.performer">
-                                        <ReferenceField
-                                    source="performerId"
-                                    reference="user"
-                                >
-                                    <UserDetail />
-                                </ReferenceField>
+                                            <ReferenceField
+                                                source="performerId"
+                                                reference="user"
+                                            >
+                                                <UserDetail />
+                                            </ReferenceField>
                                         </Labeled>
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={4}>
@@ -107,14 +100,14 @@ const DestructionDetail = () => {
                                             <BooleanField source="twoStage" />
                                         </Labeled>
                                     </Grid>
-                                    
+
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12}>
                                     <Labeled source="description" label="bis.common.description">
                                         <RichTextField source="description" />
                                     </Labeled>
                                 </Grid>
-                                
+
                             </Grid>
                         </Grid>
 
@@ -128,19 +121,58 @@ const DestructionDetail = () => {
                         <Typography variant="h6" gutterBottom>
                             {translate('bis.destruction.first_stage')}
                         </Typography>
-                        <div>
-                            <ExplosiveUnitReferenceField />
-                        </div>
-                        
+                        {record.explosiveUnitId!=null &&
+                            <div>
+                                <Typography variant="subtitle1" gutterBottom>
+                                    {translate('bis.explosive_unit.one')}
+                                </Typography>
+                                <div>
+                                    <ExplosiveUnitReferenceField />
+                                </div>
+                            </div>}
+                        {record.additionalItems!.length > 0 &&
+                            <div>
+                                <Typography variant="subtitle1" gutterBottom>
+                                    {translate('bis.simple_entity.title')}
+                                </Typography>
+                                <div>
+                                    <AdditionalItemsSummary after={false} />
+                                </div>
+                            </div>
+                        }
+
+                        <Typography variant="h6" gutterBottom>
+                            {translate('bis.destruction.second_stage')}
+                        </Typography>
+                        {record.secondExplosiveUnitId!= null &&
+                            <div>
+                                <Typography variant="subtitle1" gutterBottom>
+                                    {translate('bis.explosive_unit.one')}
+                                </Typography>
+                                <div>
+                                    <ExplosiveUnitReferenceField />
+                                </div>
+                            </div>}
+                        {record.secondAdditionalItems!.length > 0 &&
+                            <div>
+                                <Typography variant="subtitle1" gutterBottom>
+                                    {translate('bis.simple_entity.title')}
+                                </Typography>
+                                <div>
+                                    <AdditionalItemsSummary after={true} />
+                                </div>
+                            </div>
+                        }
+
                         <Typography variant="h6" gutterBottom>
                             {translate('bis.destruction.recommendation')}
                         </Typography>
                         <div>
                             <TextField source='recommendations' />
                         </div>
-    
+
                         <div>
-                            <DestructionImagesList resource={'destruction'}/>
+                            <DestructionImagesList resource={'destruction'} />
                         </div>
                     </CardContent>
                     <Toolbar />

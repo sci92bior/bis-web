@@ -14,6 +14,7 @@ import { RichTextInput } from 'ra-input-rich-text';
 
 import { ExplosiveUnit, Product } from '../types';
 import { ExplosiveUnitEditDetail } from './ExplosiveUnitEditDetails';
+import { ExplosiveUnitCompositionCreate } from './ExplosiveUnitCompositionCreate';
 
 const ExplosiveUnitTitle = () => {
     const record = useRecordContext<ExplosiveUnit>();
@@ -29,15 +30,12 @@ const ExplosiveUnitEdit = () => (
             >
                 <ExplosiveUnitEditDetail />
             </FormTab>
-            <ReviewsFormTab path="composition" label="bis.common.composition">
-            <ArrayField source="explosiveMaterials">
-                <Datagrid>
-                    <TextField source="explosiveMaterial.name" />
-                    <TextField source="quantity" />
-                </Datagrid>
-            </ArrayField>
-
-            </ReviewsFormTab>
+            <FormTab
+                label="bis.common.composition"
+                sx={{ maxWidth: '40em' }}
+            >
+            <ExplosiveUnitCompositionCreate />
+            </FormTab>
         </TabbedForm>
     </Edit>
 );

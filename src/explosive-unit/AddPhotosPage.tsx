@@ -5,13 +5,21 @@ import {
     required,
     useTranslate,
 } from 'react-admin';
+import { LoadImageExample } from '../database/common/ImageUploader';
+import { useController, useWatch, useFormContext} from "react-hook-form";
 
 export const AddPhotosPage = () => {
-    const translate = useTranslate();
+    const {getValues, setValue} = useFormContext();
+             
+    const handleImageUpload = (images : Array<any>) => {
+        var imagesToSave = [];
+        for (let value of images) {
+            imagesToSave.push(value["data_url"]);
+          }
+        setValue(`photos`,imagesToSave);
+    }
     return (
-    <ImageInput source="pictures" label="Related pictures" accept="image/*" placeholder={<p>{translate("bis.common.drop_your_file_here")} </p>} multiple={true}>
-    <ImageField source="src" title="title" />
-</ImageInput>
+        <LoadImageExample maxImage={10} onUpload={handleImageUpload}/>
     )
 
 };
